@@ -4,15 +4,6 @@ import os
 from pathlib import Path
 
 # ==========================================================
-# 🛠 使用者設定區（可自行修改）
-# ==========================================================
-# 專案根目錄：此檔案所在的上層目錄
-import streamlit as st
-import pandas as pd
-import os
-from pathlib import Path
-
-# ==========================================================
 # 🛠 使用者設定區（使用相對路徑）
 # ==========================================================
 # 此檔案：compare/src.py
@@ -29,8 +20,8 @@ DATA_DIR = PROJECT_ROOT / "data"
 REPORT_DIR = PROJECT_ROOT / "reports"
 
 # 預設檔案
-STATIC_FILE = DATA_DIR / "books_static_20251014_p8.csv"
-DYNAMIC_FILE = DATA_DIR / "quotes_dynamic_20251014_p8.csv"
+STATIC_FILE = DATA_DIR / "books_static_20251015_p8.csv"
+DYNAMIC_FILE = DATA_DIR / "quotes_dynamic_20251015_p10.csv"
 
 # ==========================================================
 # 🌐 Streamlit 頁面設定

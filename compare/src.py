@@ -15,12 +15,12 @@ DATA_DIR   = os.path.join(BASE_DIR, 'data')
 REPORT_DIR = os.path.join(BASE_DIR, 'reports')
 
 # 【靜態資料】
-static_old_file= os.path.join(DATA_DIR, 'books_static_20251014_p5.csv')
-static_new_file= os.path.join(DATA_DIR, 'books_static_20251014_p8.csv')
+static_old_file= os.path.join(DATA_DIR, 'books_static_20251015_p5.csv')
+static_new_file= os.path.join(DATA_DIR, 'books_static_20251015_p8.csv')
 
 # 【動態資料】
-dynamic_old_file = os.path.join(DATA_DIR, 'quotes_dynamic_20251014_p5.csv')
-dynamic_new_file = os.path.join(DATA_DIR, 'quotes_dynamic_20251014_p8.csv')
+dynamic_old_file = os.path.join(DATA_DIR, 'quotes_dynamic_20251015_p5.csv')
+dynamic_new_file = os.path.join(DATA_DIR, 'quotes_dynamic_20251015_p10.csv')
 # ==========================================================
 
 # 指定中文字型（以 Windows 為例）
@@ -38,16 +38,16 @@ plt.rcParams['axes.unicode_minus'] = False  # 正常顯示負號
 # ==============================================================================
 SOURCES = {
     "books_static": {
-        "old_file": os.path.join(DATA_DIR, 'books_static_20251014_p5.csv'),
-        "new_file": os.path.join(DATA_DIR, 'books_static_20251014_p8.csv'),
+        "old_file": static_old_file,  
+        "new_file": static_new_file,  
         "key_columns": ['price/value', 'title', 'category'],
-        "visual_focus": "price",  # 圖表主題
+        "visual_focus": "price",
     },
     "quotes_dynamic": {
-        "old_file": os.path.join(DATA_DIR, 'quotes_dynamic_20251014_p5.csv'),
-        "new_file": os.path.join(DATA_DIR, 'quotes_dynamic_20251014_p8.csv'),
+        "old_file": dynamic_old_file, 
+        "new_file": dynamic_new_file, 
         "key_columns": ['title', 'author/vendor', 'category'],
-        "visual_focus": "author",  # 圖表主題
+        "visual_focus": "author",
     }
 }
 

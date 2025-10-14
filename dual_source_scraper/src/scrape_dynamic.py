@@ -178,10 +178,9 @@ def scrape_quotes(num_pages: int = 5, outdir: str = "data", headless: bool = Tru
                     "source": SOURCE_NAME,
                     "title": title,
                     "url": url_here,
-                    "author/vendor": author,                     # 這個站點用作者填入
+                    "author": author,                     # 這個站點用作者填入
                     "category": ",".join(tags) if tags else "",  # tags 當成分類
                     "date": today,                               # 無發布日 → 爬取日
-                    "price/value": value_numeric,                # 示範型數值欄位
                     "last_seen_at": today,
                 }
                 rows.append(row)
@@ -193,8 +192,8 @@ def scrape_quotes(num_pages: int = 5, outdir: str = "data", headless: bool = Tru
 
     # DataFrame + cleaning
     df = pd.DataFrame(rows, columns=[
-        "id", "source", "title", "url", "author/vendor",
-        "category", "date", "price/value", "last_seen_at"
+        "id", "source", "title", "url", "author",
+        "category", "date", "last_seen_at"
     ])
 
     # Dedup (same quote+author across pages)
@@ -209,10 +208,6 @@ def scrape_quotes(num_pages: int = 5, outdir: str = "data", headless: bool = Tru
         bad = ~df[col].astype(str).str.fullmatch(r"\d{8}")
         if bad.any():
             df.loc[bad, col] = today
-
-    # Numeric sanity: price/value must be numeric
-    df["price/value"] = pd.to_numeric(df["price/value"], errors="coerce")
-    df = df.dropna(subset=["price/value"])
 
     out_path = os.path.join(outdir, f"quotes_dynamic_{today}_p{num_pages}.csv")
     df.to_csv(out_path, index=False, quoting=csv.QUOTE_MINIMAL)

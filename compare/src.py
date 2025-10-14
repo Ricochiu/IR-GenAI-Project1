@@ -384,6 +384,22 @@ def create_visualizations_quotes(dataframe, source_name, output_dir="reports"):
         plt.close()
     except Exception as e:
         print(f"產生圖表 2 (主題分類) 失敗: {e}")
+        
+        # 🆕 3️⃣ 作者數量分佈（完整長條圖）
+    try:
+        plt.figure(figsize=(14, 8))
+        author_counts_all = dataframe['author'].value_counts()
+        sns.barplot(x=author_counts_all.values, y=author_counts_all.index, palette="ch:s=.25,rot=-.25")
+        plt.title(f'{source_name} - 作者數量分佈（完整）', fontsize=16)
+        plt.xlabel('引言數量', fontsize=12)
+        plt.ylabel('作者', fontsize=12)
+        plt.tight_layout()
+        chart_path = os.path.join(output_dir, f"chart_{source_name}_authors_full.png")
+        plt.savefig(chart_path)
+        plt.close()
+        print(f"已儲存圖表 3 (作者完整分佈) -> {chart_path}")
+    except Exception as e:
+        print(f"產生圖表 3 (作者完整分佈) 失敗: {e}")
 # ==============================================================================
 # 主程式執行區塊
 # ==============================================================================

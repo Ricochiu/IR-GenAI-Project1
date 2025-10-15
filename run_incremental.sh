@@ -18,4 +18,9 @@ echo "📗 開始增量 Books"
 echo "======================================="
 python dual_source_scraper/src/scrape_static_incremental.py --pages 8 --prev data/books_static_20251015_p5.csv 
 
+echo "======================================="
+echo "📗 開始crawl dynamic web udn"
+echo "======================================="
+python dual_source_scraper/src/new_dynamic.py    
+
 echo "🎉 --- 增量更新完成 ---"
